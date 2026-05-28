@@ -1,14 +1,12 @@
 """
 Laser Light Propagation in Optical Fibers
 ==========================================
-This simulation shows how light travels through an optical fiber
-using the principle of Total Internal Reflection (TIR).
+This simulation shows how light travels through an optical fiber using the principle of Total Internal Reflection (TIR).
 
 Key Concepts:
 - Optical fibers have two layers: Core (inner) and Cladding (outer)
 - Core has a higher refractive index than Cladding
-- When light hits the core-cladding boundary at a shallow enough angle,
-  it reflects completely back into the core — this is called TIR
+- When light hits the core-cladding boundary at a shallow enough angle, it reflects completely back into the core — this is called TIR
 - Light "bounces" its way from one end of the fiber to the other
 
 THINGS THAT CAN BE CHANGED:
@@ -27,14 +25,13 @@ CORE_RADIUS    = 1.0    # Radius of the inner core
 CLAD_RADIUS    = 1.5    # Radius of the outer cladding
 
 N_CORE = 3            # Refractive index of core (e.g. glass)
-N_CLAD = 1.45           # Refractive index of cladding (slightly lower — this is key!)
+N_CLAD = 1.45           # Refractive index of cladding (slightly lower)
 
 # Snell's Law at the core-cladding interface tells us the critical angle.
 # Light hitting the boundary at angles GREATER than this will be totally reflected.
 critical_angle_rad = np.arcsin(N_CLAD / N_CORE)
 critical_angle_deg = np.degrees(critical_angle_rad)
 print(f"Critical angle for Total Internal Reflection: {critical_angle_deg:.2f}°")
-
 
 # ── Ray Tracing Function ────────────────────────────────────────────────────
 def trace_ray(entry_angle_deg, num_bounces=30):
@@ -45,7 +42,6 @@ def trace_ray(entry_angle_deg, num_bounces=30):
         entry_angle_deg : angle at which the ray enters the fiber (in degrees)
                           measured from the fiber axis (horizontal)
         num_bounces     : maximum number of reflections to simulate
-
     Returns:
         x_points, y_points : lists of coordinates of the ray path
     """
@@ -95,8 +91,7 @@ def trace_ray(entry_angle_deg, num_bounces=30):
         y_points.append(y)
 
     return x_points, y_points
-
-
+  
 # ── Plotting ────────────────────────────────────────────────────────────────
 fig, axes = plt.subplots(3, 1, figsize=(12, 10))
 fig.suptitle("Laser Light Propagation in an Optical Fiber", fontsize=14, fontweight='bold')
@@ -144,7 +139,6 @@ plt.tight_layout()
 plt.savefig("optical_fiber_simulation.png", dpi=150, bbox_inches='tight')
 plt.show()
 print("\nPlot saved as 'optical_fiber_simulation.png' in the current folder")
-
 
 # ── Summary of Physics ───────────────────────────────────────────────────────
 print("\n── Physics Summary ─────────────────────────────────────────────────")
